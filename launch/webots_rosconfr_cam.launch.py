@@ -41,12 +41,6 @@ def generate_launch_description():
         output='screen',
     )
 
-    vehicle_state_publisher = Node(
-        package='rosconfr',
-        executable='vehicle_state_publisher',
-        output='screen',
-    )
-
     # CoVAPSy_conduite = Node(
     #     package='monPaquetCoVAPSy',
     #     executable='CoVAPSy_conduite',
@@ -56,7 +50,6 @@ def generate_launch_description():
         webots,
         webots_bridge,
         robot_state_publisher,
-        vehicle_state_publisher,
         # CoVAPSy_conduite,
         launch.actions.RegisterEventHandler(
             event_handler=launch.event_handlers.OnProcessExit(

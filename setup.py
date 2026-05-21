@@ -46,9 +46,4 @@ setup(
             'pytest',
         ],
     },
-    entry_points={
-        'console_scripts': [
-            'vehicle_state_publisher = rosconfr.vehicle_state_publisher:main'
-        ],
-    },
 )

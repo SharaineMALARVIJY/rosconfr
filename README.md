@@ -36,8 +36,7 @@ Both launch files start the same core ROS graph, with camera topics added by the
 | `webots` | process | `WebotsLauncher` | Starts the Webots simulator with the selected world. |
 | `webots_bridge` | node | `webots_ros2_driver::WebotsController` | Connects the `yellow_car` Webots robot to ROS 2 and exposes sensor interfaces declared in the URDF. |
 | `robot_state_publisher` | node | `robot_state_publisher` | Publishes the TF tree from the robot URDF. |
-| `vehicle_state_publisher` | node | `rosconfr.vehicle_state_publisher` | Converts Ackermann commands into synthetic wheel and steering joint states published on `/joint_states`. |
-| `yellow_driver` | node created inside the Webots plugin | `rosconfr.yellow_driver.YellowDriver` | Subscribes to `/yellow_car/cmd_ackermann` and applies speed and steering commands to the simulated car. |
+| `yellow_driver` | node created inside the Webots plugin | `rosconfr.yellow_driver.YellowDriver` | Subscribes to `/yellow_car/cmd_ackermann`, applies speed and steering commands to the simulated car, and publishes measured wheel/joint states plus current speed. |
 
 ## Topics
 
@@ -47,9 +46,10 @@ These topics are available in both launch files.
 
 | Topic | Type | Direction | Provided by | Notes |
 |---|---|---|---|---|
-| `/yellow_car/cmd_ackermann` | `ackermann_msgs/msg/AckermannDrive` | subscribed | `yellow_driver`, `vehicle_state_publisher` | Main control input for the simulated vehicle. |
+| `/yellow_car/cmd_ackermann` | `ackermann_msgs/msg/AckermannDrive` | subscribed | `yellow_driver` | Main control input for the simulated vehicle. |
 | `/yellow_car/scan` | `sensor_msgs/msg/LaserScan` | published | `webots_bridge` | Lidar output from the `RpLidarA2` device. |
-| `/joint_states` | `sensor_msgs/msg/JointState` | published | `vehicle_state_publisher` | Steering and wheel rotation states derived from the latest Ackermann command. |
+| `/joint_states` | `sensor_msgs/msg/JointState` | published | `yellow_driver` | Steering and wheel rotation states measured from the simulated vehicle joints. |
+| `/yellow_car/current_speed` | `std_msgs/msg/Float32` | published | `yellow_driver` | Current vehicle speed measured by Webots and converted to m/s. |
 | `/tf` | `tf2_msgs/msg/TFMessage` | published | `robot_state_publisher` | Dynamic transforms for the robot model. |
 | `/tf_static` | `tf2_msgs/msg/TFMessage` | published | `robot_state_publisher` | Static transforms from the robot URDF. |
 
@@ -64,6 +64,6 @@ These topics are only available in the camera-enabled launch file.
 
 ## Notes
 
-- `vehicle_state_publisher` does not read wheel encoders from Webots. It integrates the last commanded speed to estimate wheel rotation. It is only used to make wheels rotating on rviz2 ;)
+- `yellow_driver` now reads Webots position sensors to publish `/joint_states`, and reads `getCurrentSpeed()` to publish `/yellow_car/current_speed` in m/s.
 - Steering is derived from the `AckermannDrive.steering_angle` field and mirrored to both front steering joints.
 - The camera is only declared in `resource/TT02_jaune_cam.urdf`, so it is only exposed by the camera launch file.
