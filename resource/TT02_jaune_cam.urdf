@@ -18,6 +18,8 @@
         </device>
         <device reference="front_camera" type="Camera">
             <ros>
+                <enabled>true</enabled>
+                <updateRate>5</updateRate>
                 <topicName>/yellow_car/image_raw</topicName>
                 <cameraInfoTopicName>/yellow_car/camera_info</cameraInfoTopicName>
                 <frameName>camera_link</frameName>
