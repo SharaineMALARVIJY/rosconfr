@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>rosconfr</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="turtle@todo.todo">turtle</maintainer>
+  <name>webots_rosconfr</name>
+  <version>0.0.1</version>
+  <description>Webots package for the ROSCon FR 2026 Hackathon</description>
+  <maintainer email="sylvain.argentieri@sorbonne-universite.fr">Sylvain ARGENTIERI</maintainer>
   <license>Apache-2.0</license>
 
   <depend>rclpy</depend>

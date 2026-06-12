@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'rosconfr'
+package_name = 'webots_rosconfr'
 data_files = []
 data_files.append(
     ('share/ament_index/resource_index/packages', ['resource/' + package_name]))
@@ -37,9 +37,9 @@ setup(
     data_files=data_files,
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='rosconfr',
-    maintainer_email='rosconfr@todo.todo',
-    description='Simulaton webots pour le Hackathon ROSConfr 2026',
+    maintainer='Sylvain ARGENTIERI',
+    maintainer_email='sylvain.argentieri@sorbonne-universite.fr',
+    description='Webots package for the ROSCon FR 2026 Hackathon',
     license='Apache-2.0',
     extras_require={
         'test': [
