@@ -8,7 +8,7 @@ from webots_ros2_driver.webots_controller import WebotsController
 
 
 def generate_launch_description():
-    package_dir = get_package_share_directory('rosconfr')
+    package_dir = get_package_share_directory('webots_rosconfr')
     robot_description_path = os.path.join(
         package_dir, 'resource', 'TT02_jaune.urdf')
     with open(robot_description_path, 'r') as file:

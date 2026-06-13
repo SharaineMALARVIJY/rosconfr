@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot name="yellow_car">
     <webots>
-        <plugin type="rosconfr.yellow_driver.YellowDriver" />
+        <plugin type="webots_rosconfr.yellow_driver.YellowDriver" />
         <device reference="RpLidarA2" type="Lidar">
             <ros>
                 <topicName>/yellow_car/scan</topicName>
@@ -22,7 +22,7 @@
         <visual>
             <origin xyz="0.127 0 -0.02" rpy="0 0 0"/>
             <geometry>
-                <mesh filename="package://rosconfr/protos/ChevroletCamaroLight.stl"/>
+                <mesh filename="package://webots_rosconfr/protos/ChevroletCamaroLight.stl"/>
             </geometry>
             <material name="yellow">
                 <color rgba="0.69 0.70 0.20 1.0"/>
