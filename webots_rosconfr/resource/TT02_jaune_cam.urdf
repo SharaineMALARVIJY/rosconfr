@@ -9,7 +9,7 @@
                 <alwaysOn>true</alwaysOn>
             </ros>
         </device>
-        
+
         <device reference="accelerometer" type="Accelerometer">
             <ros>
                 <topicName>/yellow_car/imu/acceleration</topicName>
@@ -33,7 +33,7 @@
                 <alwaysOn>true</alwaysOn>
             </ros>
         </device>
-
+        
         <device reference="front_camera" type="Camera">
             <ros>
                 <enabled>true</enabled>
